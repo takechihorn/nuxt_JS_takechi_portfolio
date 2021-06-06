@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "nuxtjstakechiportfol1530f2c3": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

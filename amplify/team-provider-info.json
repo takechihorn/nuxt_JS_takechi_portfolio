@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nuxtjstakechiportfol-dev-04224-authRole",
+      "UnauthRoleArn": "arn:aws:iam::213330998827:role/amplify-nuxtjstakechiportfol-dev-04224-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::213330998827:role/amplify-nuxtjstakechiportfol-dev-04224-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-nuxtjstakechiportfol-dev-04224-deployment",
+      "UnauthRoleName": "amplify-nuxtjstakechiportfol-dev-04224-unauthRole",
+      "StackName": "amplify-nuxtjstakechiportfol-dev-04224",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:213330998827:stack/amplify-nuxtjstakechiportfol-dev-04224/cbffc0a0-c6dd-11eb-b188-0e447adc7a5b",
+      "AmplifyAppId": "d1cqntcq5x2l30"
+    },
+    "categories": {
+      "auth": {
+        "nuxtjstakechiportfol1530f2c3": {}
+      }
+    }
+  }
+}
