@@ -6,27 +6,57 @@
       color="primary"
       dark
     >
+      <!--      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />-->
+
       <v-toolbar-title style="width: 350px">
-        <a href="/" class="white--text" style="text-decoration: none"
+        <a to="/" class="white--text" style="text-decoration: none"
           ><v-icon>mdi-headphones</v-icon>&nbsp;HeadGears</a
         >
       </v-toolbar-title>
       <v-spacer />
-      <v-btn icon>
-        <v-icon>mdi-account-circle</v-icon>
-      </v-btn>
-      <v-btn to="/cart" icon>
-        <v-badge content="2" value="2" color="green" overlap>
-          <v-icon>mdi-cart</v-icon>
-        </v-badge>
-      </v-btn>
+      <div v-if="$auth.isAuthenticated">
+        You're logged in as {{ $auth.email }}
+      </div>
+      <div v-if="!$auth.isAuthenticated">
+        <v-btn to="/login" icon>
+          <v-icon>mdi-login</v-icon>
+        </v-btn>
+        <v-btn to="/signup" icon>
+          <v-icon>mdi-account-plus</v-icon>
+        </v-btn>
+        <v-btn to="/cart" icon>
+          <v-badge content="2" value="2" color="green" overlap>
+            <v-icon>mdi-cart</v-icon>
+          </v-badge>
+          <!-- <v-badge content="2" value="2" color="green" overlap> -->
+          <!-- </v-badge> -->
+        </v-btn>
+      </div>
+      <div v-else>
+        <v-btn icon @click="$store.dispatch('auth/logout')">
+          <v-icon>mdi-logout</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>mdi-account-check</v-icon>
+        </v-btn>
+        <v-btn to="/checkout" icon>
+          <v-icon>mdi-credit-card-check-outline</v-icon>
+        </v-btn>
+        <v-btn to="/cart" icon>
+          <!-- <v-badge content="2" value="2" color="green" overlap> -->
+          <v-badge content="2" value="2" color="green" overlap>
+            <v-icon>mdi-cart</v-icon>
+          </v-badge>
+          <!-- </v-badge> -->
+        </v-btn>
+      </div>
     </v-app-bar>
     <v-main>
       <v-bottom-navigation :value="activeBtn" color="primary" horizontal>
-        <v-btn to="/">
+        <v-btn href="/" class="v-btn">
           <span>Home</span>
         </v-btn>
-        <v-btn to="/products">
+        <v-btn href="/products" class="v-btn">
           <span>Product</span>
         </v-btn>
       </v-bottom-navigation>
@@ -63,7 +93,7 @@
         <v-divider></v-divider>
 
         <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>ShipIT</strong>
+          {{ new Date().getFullYear() }} — <strong>HeadGears</strong>
         </v-card-text>
       </v-card>
     </v-footer>
@@ -73,15 +103,13 @@
 export default {
   data() {
     return {
-      items: [
-        { title: 'T-Shirts' },
-        { title: 'Jackets' },
-        { title: 'Shirts' },
-        { title: 'Jeans' },
-        { title: 'Shoes' },
-      ],
       activeBtn: 1,
     }
+  },
+  computed: {
+    count() {
+      return this.$store.getters['cart/cartItemCount']
+    },
   },
 }
 </script>

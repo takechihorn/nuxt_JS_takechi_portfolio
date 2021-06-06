@@ -1,93 +1,313 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+  <div>
+    <v-carousel hide-delimiters>
+      <v-carousel-item :src="require('../assets/img/home/slider4.jpg')">
+        <v-row class="fill-height" align="center" justify="center">
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
+            <strong>Upto 60% + Extra 10%</strong>
           </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
           <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
+        </v-row>
+      </v-carousel-item>
+      <v-carousel-item :src="require('../assets/img/home/slider2.jpg')">
+        <v-row class="fill-height" align="center" justify="center">
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
+            <strong>Upto 60% + Extra 10%</strong>
+          </div>
+          <br />
+        </v-row>
+      </v-carousel-item>
+      <v-carousel-item :src="require('../assets/img/home/slider3.jpg')">
+        <v-row class="fill-height" align="center" justify="center">
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
+            <strong>Upto 60% + Extra 10%</strong>
+          </div>
+          <br />
+        </v-row>
+      </v-carousel-item>
+      <v-carousel-item :src="require('../assets/img/home/slider1.jpg')">
+        <v-row class="fill-height" align="center" justify="center">
+          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
+            <strong>Upto 60% + Extra 10%</strong>
+          </div>
+          <br />
+        </v-row>
+      </v-carousel-item>
+    </v-carousel>
+    <div class="pl-4 pr-4 pt-4 row">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <v-card>
+          <v-img
+            :src="require('../assets/img/home/deal1.jpg')"
+            class="white--text align-center"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+            height="400px"
           >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+            <h1 class="text-center font-size">Top Picks</h1>
+            <div class="text-center">
+              <v-btn to="/shop" class="white--text" outlined>SHOP NOW</v-btn>
+            </div>
+          </v-img>
+        </v-card>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <v-card>
+          <v-img
+            :src="require('../assets/img/home/slider1.jpg')"
+            class="white--text align-center"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+            height="400px"
+          >
+            <h1 class="text-center font-size">New Arrivals</h1>
+            <div class="text-center">
+              <v-btn to="/shop" class="white--text" outlined>SHOP NOW</v-btn>
+            </div>
+          </v-img>
+        </v-card>
+      </div>
+    </div>
+    <div class="pl-4 pr-4 pt-4 row">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <v-card outlined>
+          <v-img
+            :src="require('../assets/img/home/deal2.jpg')"
+            class="white--text align-center"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+            height="300px"
+          >
+            <h1 class="text-center font-size">Noise Canselling</h1>
+            <div class="text-center mt-2">
+              <v-btn class="white--text caption" to="/shop" text
+                >SHOP NOW
+                <v-icon class="white--text caption"
+                  >mdi-arrow-right</v-icon
+                ></v-btn
+              >
+            </div>
+          </v-img>
+        </v-card>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <v-card outlined>
+          <v-img
+            :src="require('../assets/img/home/deal3.jpg')"
+            class="white--text align-center"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+            height="300px"
+          >
+            <h1 class="text-center font-size">Premium Sound</h1>
+            <div class="text-center mt-2">
+              <v-btn class="white--text caption" to="/shop" text
+                >SHOP NOW
+                <v-icon class="white--text caption"
+                  >mdi-arrow-right</v-icon
+                ></v-btn
+              >
+            </div>
+          </v-img>
+        </v-card>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <v-card outlined>
+          <v-img
+            :src="require('../assets/img/home/deal4.jpg')"
+            class="white--text align-center"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+            height="300px"
+          >
+            <h1 class="text-center font-size">3D Audio</h1>
+            <div class="text-center mt-2">
+              <v-btn class="white--text caption" to="/shop" text
+                >SHOP NOW
+                <v-icon class="white--text caption"
+                  >mdi-arrow-right</v-icon
+                ></v-btn
+              >
+            </div>
+          </v-img>
+        </v-card>
+      </div>
+    </div>
+    <v-container>
+      <v-row no-gutters>
+        <v-col :cols="12">
+          <v-card-text class="" tile outlined>
+            <v-card-title class="subheading">Brand Collection</v-card-title>
+            <v-divider></v-divider>
+            <div class="row">
+              <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center">
+                <v-hover v-slot:default="{ hover }" open-delay="200">
+                  <v-card :elevation="hover ? 16 : 2">
+                    <v-img
+                      class="white--text align-end"
+                      height="200px"
+                      :src="require('../assets/img/home/deal1.jpg')"
+                    >
+                      <v-card-title>Bose</v-card-title>
+                    </v-img>
+
+                    <v-card-text class="text--primary text-center">
+                      <div>Upto 60% + Extra 10%</div>
+                      <div>SoundSport, QuietComfort</div>
+                    </v-card-text>
+
+                    <div class="text-center">
+                      <v-btn to="/shop" class="ma-2" outlined color="info">
+                        Explore
+                      </v-btn>
+                    </div>
+                  </v-card>
+                </v-hover>
+              </div>
+              <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center">
+                <v-hover v-slot:default="{ hover }" open-delay="200">
+                  <v-card :elevation="hover ? 16 : 2">
+                    <v-img
+                      class="white--text align-end"
+                      height="200px"
+                      :src="require('../assets/img/home/deal2.jpg')"
+                    >
+                      <v-card-title>SONY</v-card-title>
+                    </v-img>
+
+                    <v-card-text class="text--primary text-center">
+                      <div>Upto 50%</div>
+                      <div>LDAC, 1000XM4, XTRABASS</div>
+                    </v-card-text>
+
+                    <div class="text-center">
+                      <v-btn to="/shop" class="ma-2" outlined color="info">
+                        Explore
+                      </v-btn>
+                    </div>
+                  </v-card>
+                </v-hover>
+              </div>
+              <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center">
+                <v-hover v-slot:default="{ hover }" open-delay="200">
+                  <v-card :elevation="hover ? 16 : 2">
+                    <v-img
+                      class="white--text align-end"
+                      height="200px"
+                      :src="require('../assets/img/home/deal3.jpg')"
+                    >
+                      <v-card-title>Jabra </v-card-title>
+                    </v-img>
+
+                    <v-card-text class="text--primary text-center">
+                      <div>Upto 60% + Extra 10%</div>
+                      <div>Elite 85t, Elite Active</div>
+                    </v-card-text>
+
+                    <div class="text-center">
+                      <v-btn to="/shop" class="ma-2" outlined color="info">
+                        Explore
+                      </v-btn>
+                    </div>
+                  </v-card>
+                </v-hover>
+              </div>
+              <div class="col-12 col-md-3 col-sm-6 col-xs-6 text-center">
+                <v-hover v-slot:default="{ hover }" open-delay="200">
+                  <v-card :elevation="hover ? 16 : 2">
+                    <v-img
+                      class="white--text align-end"
+                      height="200px"
+                      :src="require('../assets/img/home/deal4.jpg')"
+                    >
+                      <v-card-title>Sennheiser </v-card-title>
+                    </v-img>
+
+                    <v-card-text class="text--primary text-center">
+                      <div>Upto 60% + Extra 10%</div>
+                      <div>Momentum Wireless, HD650</div>
+                    </v-card-text>
+
+                    <div class="text-center">
+                      <v-btn to="/shop" class="ma-2" outlined color="info">
+                        Explore
+                      </v-btn>
+                    </div>
+                  </v-card>
+                </v-hover>
+              </div>
+            </div>
+          </v-card-text>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-card class="accent">
+      <v-container>
+        <v-row no-gutters>
+          <v-col class="col-12 col-md-4 col-sm-12">
+            <v-row>
+              <v-col class="col-12 col-sm-3 pr-4" align="right">
+                <v-icon class="display-2">mdi-truck</v-icon>
+              </v-col>
+              <v-col class="col-12 col-sm-9 pr-4">
+                <h3 class="font-weight-light">FREE SHIPPING & RETURN</h3>
+                <p class="font-weight-thin">Free Shipping over $300</p>
+              </v-col>
+            </v-row>
+          </v-col>
+          <v-col class="col-12 col-md-4 col-sm-12">
+            <v-row>
+              <v-col class="col-12 col-sm-3 pr-4" align="right">
+                <v-icon class="display-2">mdi-cash-usd</v-icon>
+              </v-col>
+              <v-col class="col-12 col-sm-9 pr-4">
+                <h3 class="font-weight-light">MONEY BACK GUARANTEE</h3>
+                <p class="font-weight-thin">30 Days Money Back Guarantee</p>
+              </v-col>
+            </v-row>
+          </v-col>
+          <v-col class="col-12 col-md-4 col-sm-12">
+            <v-row>
+              <v-col class="col-12 col-sm-3 pr-4" align="right">
+                <v-icon class="display-2">mdi-headset</v-icon>
+              </v-col>
+              <v-col class="col-12 col-sm-9 pr-4">
+                <h3 class="font-weight-light">020-800-456-747</h3>
+                <p class="font-weight-thin">24/7 Available Support</p>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-card>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuetifyLogo,
+  data() {
+    return {
+      items: [
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me 2' },
+      ],
+      activeBtn: 1,
+      colors: [
+        'indigo',
+        'warning',
+        'pink darken-2',
+        'red lighten-1',
+        'deep-purple accent-4',
+      ],
+      slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth'],
+    }
   },
 }
 </script>
+<style>
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+}
+</style>

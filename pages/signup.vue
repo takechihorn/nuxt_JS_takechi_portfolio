@@ -105,6 +105,8 @@
                     </v-row>
                   </v-form>
                   <nuxt-link to="/login">Have an account? Login</nuxt-link>
+                  <v-spacer></v-spacer>
+                  <nuxt-link to="/">Back to Top</nuxt-link>
                 </v-card-text>
               </v-card>
             </v-tab-item>

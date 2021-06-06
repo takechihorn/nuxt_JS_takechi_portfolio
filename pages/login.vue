@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <v-dialog v-model="dialog" persistent max-width="500px" min-width="360px">
-        <div v-if="!$auth.isAuthenticated">
+        <div v-if="true">
           <v-tabs
             v-model="tab"
             show-arrows
@@ -65,13 +65,15 @@
                     </v-row>
                   </v-form>
                   <nuxt-link to="/signup">Need an account? Signup</nuxt-link>
+                  <v-spacer></v-spacer>
+                  <nuxt-link to="/">Back to Top</nuxt-link>
                 </v-card-text>
               </v-card>
             </v-tab-item>
           </v-tabs>
         </div>
         <div v-else>
-          You're logged in as {{ $auth.email }}.
+          You're logged in as {{}}.
           <v-btn
             x-large
             block
