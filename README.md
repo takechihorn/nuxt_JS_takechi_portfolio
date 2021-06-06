@@ -1,0 +1,1 @@
+# nuxt_JS_takechi_portfolio
