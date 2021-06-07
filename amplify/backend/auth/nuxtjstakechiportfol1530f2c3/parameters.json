@@ -1,6 +1,6 @@
 {
     "identityPoolName": "nuxtjstakechiportfol1530f2c3_identitypool_1530f2c3",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "nuxtjs1530f2c3",
     "userPoolName": "nuxtjstakechiportfol1530f2c3_userpool_1530f2c3",
     "autoVerifiedAttributes": [
