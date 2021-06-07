@@ -1,0 +1,86 @@
+type Headphone
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # Admin ユーザーにはcreate, update , delete ができる。
+      { allow: groups, groups: ["Admin"] }
+      # 登録ユーザーは全てのヘッドホンを閲覧できる
+      { allow: private, operations: [read] }
+      # 登録していないゲストユーザーも全てのヘッドホンを閲覧できる
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  description: String
+  image: String
+  maker: String
+  featured: Boolean
+  price: Float
+  orders: [HeadphoneOrder] @connection(keyName: "byHeadphone", fields: ["id"])
+}
+
+type HeadphoneOrder
+  @model(queries: null, subscriptions: null)
+  @key(name: "byHeadphone", fields: ["headphone_id", "order_id"])
+  @key(name: "byOrder", fields: ["order_id", "headphone_id"])
+  @auth(
+    rules: [
+      # Orderした本のみ自分のオーダーを見れる
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      # adminは管理者画面からオーダを見れる
+      { allow: groups, groups: ["Admin"] }
+    ]
+  ) {
+  id: ID!
+  headphone_id: ID!
+  order_id: ID!
+  headphone: Headphone @connection(fields: ["headphone_id"])
+  order: Order @connection(fields: ["order_id"])
+}
+
+type Order
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # 注文した本人のみ自分のオーダーを見れる
+      # owner = logged in user
+      # emailでorderを判別
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      # allow admins to view orders
+      { allow: groups, groups: ["Admin"] }
+    ]
+  )
+  @key(name: "byUser", fields: ["user"]) {
+  id: ID!
+  user: String!
+  date: String
+  total: Float
+  headphones: [HeadphoneOrder] @connection(keyName: "byOrder", fields: ["id"])
+}
+
+type Mutation {
+  processOrder(input: ProcessOrderInput!): OrderStatus
+    @function(name: "processPaymenttakechiPF-${env}")
+    @function(name: "createOrdertakechiPF-${env}")
+}
+enum OrderStatus {
+  SUCCESS
+  FAILED
+}
+
+input CartItem {
+  id: ID!
+  title: String
+  image: String
+  price: Float
+  amount: Int
+}
+
+input ProcessOrderInput {
+  id: ID!
+  cart: [CartItem]
+  total: Float!
+  token: String!
+  address: String
+}

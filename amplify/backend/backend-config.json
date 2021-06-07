@@ -26,5 +26,30 @@
       "service": "Lambda",
       "dependsOn": []
     }
+  },
+  "api": {
+    "myheadphonestore": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authnuxtjstakechiportfol1530f2c3"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 365,
+                "description": "Guest user access to headphones"
+              }
+            }
+          ]
+        }
+      }
+    }
   }
 }
