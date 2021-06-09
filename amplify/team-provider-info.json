@@ -14,6 +14,16 @@
     "categories": {
       "auth": {
         "nuxtjstakechiportfol1530f2c3": {}
+      },
+      "function": {
+        "processPaymenttakechiPF": {
+          "deploymentBucketName": "amplify-nuxtjstakechiportfol-dev-04224-deployment",
+          "s3Key": "amplify-builds/processPaymenttakechiPF-364436493342786a7037-build.zip"
+        },
+        "createOrdertakechiPF": {
+          "deploymentBucketName": "amplify-nuxtjstakechiportfol-dev-04224-deployment",
+          "s3Key": "amplify-builds/createOrdertakechiPF-73494454317436504c5a-build.zip"
+        }
       }
     }
   }
