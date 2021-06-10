@@ -59,6 +59,7 @@ import * as queries from '../src/graphql/queries'
 export default {
   data() {
     return {
+      page: 1,
       products: [
         {
           id: 1,
@@ -147,6 +148,16 @@ export default {
       ],
     }
   },
+  computed: {
+    headphones() {
+      return this.$store.state.product.headphones
+    },
+  },
+  methods: {
+    addtocart(item) {
+      this.$store.commit('product/addToCart', item)
+    },
+  },
   beforeMount() {
     let data
     ;(async () => {
@@ -155,6 +166,7 @@ export default {
           graphqlOperation(queries.listHeadphones)
         ))
         console.log(data)
+        this.$store.commit('product/setHeadphone', data)
         // console.log(errors)
       } catch (err) {
         console.log(err)
