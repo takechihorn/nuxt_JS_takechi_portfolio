@@ -15,7 +15,20 @@ export const createHeadphone = /* GraphQL */ `
       id
       title
       description
-      image
+      images {
+        items {
+          id
+          contentType
+          height
+          width
+          size
+          createdAt
+          updatedAt
+          owner
+          headphoneId
+        }
+        nextToken
+      }
       maker
       featured
       price
@@ -44,7 +57,20 @@ export const updateHeadphone = /* GraphQL */ `
       id
       title
       description
-      image
+      images {
+        items {
+          id
+          contentType
+          height
+          width
+          size
+          createdAt
+          updatedAt
+          owner
+          headphoneId
+        }
+        nextToken
+      }
       maker
       featured
       price
@@ -73,7 +99,20 @@ export const deleteHeadphone = /* GraphQL */ `
       id
       title
       description
-      image
+      images {
+        items {
+          id
+          contentType
+          height
+          width
+          size
+          createdAt
+          updatedAt
+          owner
+          headphoneId
+        }
+        nextToken
+      }
       maker
       featured
       price
@@ -90,6 +129,138 @@ export const deleteHeadphone = /* GraphQL */ `
       }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const createImage = /* GraphQL */ `
+  mutation CreateImage(
+    $input: CreateImageInput!
+    $condition: ModelImageConditionInput
+  ) {
+    createImage(input: $input, condition: $condition) {
+      id
+      fullsize {
+        region
+        bucket
+        key
+      }
+      thumbnail {
+        region
+        bucket
+        key
+      }
+      contentType
+      height
+      width
+      size
+      createdAt
+      updatedAt
+      owner
+      headphoneId
+      headphone {
+        id
+        title
+        description
+        images {
+          nextToken
+        }
+        maker
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const updateImage = /* GraphQL */ `
+  mutation UpdateImage(
+    $input: UpdateImageInput!
+    $condition: ModelImageConditionInput
+  ) {
+    updateImage(input: $input, condition: $condition) {
+      id
+      fullsize {
+        region
+        bucket
+        key
+      }
+      thumbnail {
+        region
+        bucket
+        key
+      }
+      contentType
+      height
+      width
+      size
+      createdAt
+      updatedAt
+      owner
+      headphoneId
+      headphone {
+        id
+        title
+        description
+        images {
+          nextToken
+        }
+        maker
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const deleteImage = /* GraphQL */ `
+  mutation DeleteImage(
+    $input: DeleteImageInput!
+    $condition: ModelImageConditionInput
+  ) {
+    deleteImage(input: $input, condition: $condition) {
+      id
+      fullsize {
+        region
+        bucket
+        key
+      }
+      thumbnail {
+        region
+        bucket
+        key
+      }
+      contentType
+      height
+      width
+      size
+      createdAt
+      updatedAt
+      owner
+      headphoneId
+      headphone {
+        id
+        title
+        description
+        images {
+          nextToken
+        }
+        maker
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
     }
   }
 `;
@@ -120,7 +291,9 @@ export const createHeadphoneOrder = /* GraphQL */ `
         id
         title
         description
-        image
+        images {
+          nextToken
+        }
         maker
         featured
         price
@@ -161,7 +334,9 @@ export const updateHeadphoneOrder = /* GraphQL */ `
         id
         title
         description
-        image
+        images {
+          nextToken
+        }
         maker
         featured
         price
@@ -202,7 +377,9 @@ export const deleteHeadphoneOrder = /* GraphQL */ `
         id
         title
         description
-        image
+        images {
+          nextToken
+        }
         maker
         featured
         price

@@ -1,6 +1,89 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getImage = /* GraphQL */ `
+  query GetImage($id: ID!) {
+    getImage(id: $id) {
+      id
+      fullsize {
+        region
+        bucket
+        key
+      }
+      thumbnail {
+        region
+        bucket
+        key
+      }
+      contentType
+      height
+      width
+      size
+      createdAt
+      updatedAt
+      owner
+      headphoneId
+      headphone {
+        id
+        title
+        description
+        images {
+          nextToken
+        }
+        maker
+        featured
+        price
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const listImages = /* GraphQL */ `
+  query ListImages(
+    $filter: ModelImageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listImages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        fullsize {
+          region
+          bucket
+          key
+        }
+        thumbnail {
+          region
+          bucket
+          key
+        }
+        contentType
+        height
+        width
+        size
+        createdAt
+        updatedAt
+        owner
+        headphoneId
+        headphone {
+          id
+          title
+          description
+          maker
+          featured
+          price
+          createdAt
+          updatedAt
+        }
+      }
+      nextToken
+    }
+  }
+`;
 export const getOrder = /* GraphQL */ `
   query GetOrder($id: ID!) {
     getOrder(id: $id) {
@@ -54,7 +137,20 @@ export const getHeadphone = /* GraphQL */ `
       id
       title
       description
-      image
+      images {
+        items {
+          id
+          contentType
+          height
+          width
+          size
+          createdAt
+          updatedAt
+          owner
+          headphoneId
+        }
+        nextToken
+      }
       maker
       featured
       price
@@ -85,7 +181,9 @@ export const listHeadphones = /* GraphQL */ `
         id
         title
         description
-        image
+        images {
+          nextToken
+        }
         maker
         featured
         price

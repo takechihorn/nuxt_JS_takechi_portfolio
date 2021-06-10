@@ -13,11 +13,33 @@ type Headphone
   id: ID!
   title: String!
   description: String
-  image: String
+  images: [Image] @connection(name: "HeadphoneImages", sortField: "createdAt")
   maker: String
   featured: Boolean
   price: Float
   orders: [HeadphoneOrder] @connection(keyName: "byHeadphone", fields: ["id"])
+}
+type Image @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  fullsize: S3Object!
+  thumbnail: S3Object
+  contentType: String
+  height: Int
+  width: Int
+  size: Int
+  headphone: Headphone
+    @connection(name: "HeadphoneImages", sortField: "createdAt")
+  createdAt: String
+  updatedAt: String
+  owner: String
+  headphoneId: String
+}
+
+# S3に保存したときにregion, bucket, leyを指定する。
+type S3Object @aws_iam @aws_cognito_user_pools {
+  region: String!
+  bucket: String!
+  key: String!
 }
 
 type HeadphoneOrder

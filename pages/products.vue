@@ -53,60 +53,12 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
+import { API, graphqlOperation } from 'aws-amplify'
+import * as queries from '../src/graphql/queries'
 export default {
   data() {
     return {
-      range: [0, 10000],
-      select: 'Popularity',
-      options: [
-        'Default',
-        'Popularity',
-        'Relevance',
-        'Price: Low to High',
-        'Price: High to Low',
-      ],
-      page: 1,
-      breadcrums: [
-        {
-          text: 'Home',
-          disabled: false,
-          href: 'breadcrumbs_home',
-        },
-        {
-          text: 'Clothing',
-          disabled: false,
-          href: 'breadcrumbs_clothing',
-        },
-        {
-          text: 'T-Shirts',
-          disabled: true,
-          href: 'breadcrumbs_shirts',
-        },
-      ],
-      min: 0,
-      max: 10000,
-      items: [
-        {
-          id: 2,
-          name: 'Shoes',
-          children: [
-            { id: 2, name: 'Casuals' },
-            { id: 3, name: 'Formals' },
-            { id: 4, name: 'Sneakers' },
-          ],
-        },
-        {
-          id: 1,
-          name: 'Clothing',
-          children: [
-            { id: 5, name: 'Shirts' },
-            { id: 6, name: 'Tops' },
-            { id: 7, name: 'Tunics' },
-            { id: 8, name: 'Bodysuit' },
-          ],
-        },
-      ],
       products: [
         {
           id: 1,
@@ -194,6 +146,20 @@ export default {
         },
       ],
     }
+  },
+  beforeMount() {
+    let data
+    ;(async () => {
+      try {
+        ;({ data } = await API.graphql(
+          graphqlOperation(queries.listHeadphones)
+        ))
+        console.log(data)
+        // console.log(errors)
+      } catch (err) {
+        console.log(err)
+      }
+    })()
   },
 }
 </script>

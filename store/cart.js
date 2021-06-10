@@ -1,11 +1,7 @@
 // import { API } from 'aws-amplify'
 
-function updateLocalStorage(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart))
-}
 export const state = () => ({
   cart: [],
-  orders: [],
   cartlength: 0,
 })
 
@@ -18,8 +14,6 @@ export const mutations = {
     } else {
       state.cart.push({ ...product, amount: 1 })
     }
-    // cartをJSONのparseに入れる？
-    updateLocalStorage(state.cart)
   },
   removeFromCart(state, product) {
     const item = state.cart.find((cartItem) => cartItem.id === product.id)

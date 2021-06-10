@@ -39,9 +39,6 @@
         <v-btn icon>
           <v-icon>mdi-account-check</v-icon>
         </v-btn>
-        <v-btn to="/checkout" icon>
-          <v-icon>mdi-credit-card-check-outline</v-icon>
-        </v-btn>
         <v-btn to="/cart" icon>
           <!-- <v-badge content="2" value="2" color="green" overlap> -->
           <v-badge content="2" value="2" color="green" overlap>
