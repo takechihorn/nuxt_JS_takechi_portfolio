@@ -153,11 +153,6 @@ export default {
       return this.$store.state.product.headphones
     },
   },
-  methods: {
-    addtocart(item) {
-      this.$store.commit('product/addToCart', item)
-    },
-  },
   beforeMount() {
     let data
     ;(async () => {
@@ -172,6 +167,11 @@ export default {
         console.log(err)
       }
     })()
+  },
+  methods: {
+    addtocart(item) {
+      this.$store.commit('product/addToCart', item)
+    },
   },
 }
 </script>

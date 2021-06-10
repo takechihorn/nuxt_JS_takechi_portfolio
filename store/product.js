@@ -12,7 +12,7 @@ import { createImage } from '../src/graphql/mutations'
 import { updateImage } from '../src/graphql/mutations'
 
 export const state = () => ({
-  headphone: null,
+  headphones: null,
 })
 
 export const mutations = {
@@ -263,7 +263,7 @@ export const actions = {
       return Promise.reject(error)
     }
   },
-  getters: {
-    products: (state) => state.products,
-  },
+}
+export const getters = {
+  headphones: (state) => state.headphones,
 }

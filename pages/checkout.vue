@@ -1,48 +1,198 @@
 <template>
-  <v-container>
-    <h2 class="display-2">Cart checkout</h2>
-
-    <form action="">
-      <v-layout>
-        <v-flex x6>
-          <strong>Payment address</strong>
-          <v-text-field label="Name"></v-text-field>
-          <v-text-field label="Address"></v-text-field>
-          <v-text-field label="Zipcode"></v-text-field>
-          <v-text-field label="City"></v-text-field>
-          <v-text-field label="Phone"></v-text-field>
-          <v-text-field label="E-mail"></v-text-field>
-
-          <v-checkbox
-            v-model="delivery_address"
-            label="Orther delivery address"
-          ></v-checkbox>
-        </v-flex>
-        <v-flex x6>
-          <strong>Delivery address</strong>
-          <div v-if="delivery_address">
-            <v-text-field label="Name"></v-text-field>
-            <v-text-field label="Address"></v-text-field>
-            <v-text-field label="Zipcode"></v-text-field>
-            <v-text-field label="City"></v-text-field>
-          </div>
-        </v-flex>
-      </v-layout>
-    </form>
-
-    <hr />
-
-    <v-btn color="success" lager style="float: right"> Complete order </v-btn>
-  </v-container>
+  <v-form ref="billing" class="px-1">
+    <v-row>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="firstName"
+          dense
+          name="firstName"
+          label="First Name"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="lastName"
+          dense
+          name="lastName"
+          label="Last Name"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="phone"
+          dense
+          name="phone"
+          label="Phone #"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="email"
+          dense
+          label="Email"
+          name="email"
+          outlined
+          :rules="[rules.required, rules.email]"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="address"
+          dense
+          label="Street Address"
+          name="address"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="city"
+          dense
+          label="City"
+          name="city"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="py-0">
+        <v-select
+          v-model="country"
+          dense
+          item-text="name"
+          item-value="code"
+          label="Country"
+          name="country"
+          outlined
+          return-object
+          :items="countries"
+          :rules="[rules.required]"
+          @change="shippingOpts(token.id)"
+        ></v-select>
+      </v-col>
+      <v-col class="py-0">
+        <v-select
+          v-model="region"
+          dense
+          item-text="name"
+          item-value="code"
+          label="Region"
+          name="region"
+          outlined
+          :items="country.states"
+          :rules="[rules.required]"
+        ></v-select>
+      </v-col>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="postalCode"
+          dense
+          label="Postal Code"
+          name="postalCode"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+    <p class="title ml-3 mb-4">Payment Details</p>
+    <v-text-field
+      v-model="cardNumber"
+      label="Card #"
+      outlined
+      :rules="[rules.required]"
+    ></v-text-field>
+    <v-row>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="expiryDate"
+          label="Date"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="cvc"
+          label="cvc"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+      <v-col class="py-0">
+        <v-text-field
+          v-model="cardZip"
+          label="Zip"
+          outlined
+          :rules="[rules.required]"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+    <v-btn @click.native="submitOrder">Submit</v-btn>
+  </v-form>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'CartCheckout',
-  data() {
-    return {
-      delivery_address: false,
-    }
+  name: 'BillingDetails',
+  props: {
+    cart: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  data: () => ({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+    country: {},
+    city: '',
+    region: '',
+    postalCode: '',
+    cardNumber: '4242 4242 4242 4242',
+    expiryDate: '01/2023',
+    cvc: '123',
+    cardZip: '94103',
+    rules: {
+      email: (v) => {
+        const pattern =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        return pattern.test(v) || 'Invalid e-mail.'
+      },
+      required: (v) => !!v || 'Required.',
+    },
+  }),
+  computed: {
+    ...mapGetters({
+      token: 'token',
+    }),
+  },
+  methods: {
+    shippingOpts(tokenID) {
+      this.$commerce.checkout
+        .getShippingOptions(tokenID, {
+          country: this.country.code,
+        })
+        .then((r) => {
+          this.$emit('shippingCost', r[0].price.formatted)
+          this.shipMethod = r[0].id
+        })
+    },
   },
 }
 </script>
