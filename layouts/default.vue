@@ -59,6 +59,7 @@
       </v-bottom-navigation>
     </v-main>
     <router-view />
+    <v-spacer />
     <v-footer :padless="true">
       <v-card flat tile width="100%" class="secondary white--text text-center">
         <v-card-text>

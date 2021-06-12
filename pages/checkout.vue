@@ -1,111 +1,5 @@
 <template>
   <v-form ref="billing" class="px-1">
-    <v-row>
-      <v-col class="py-0">
-        <v-text-field
-          v-model="firstName"
-          dense
-          name="firstName"
-          label="First Name"
-          outlined
-          :rules="[rules.required]"
-        ></v-text-field>
-      </v-col>
-      <v-col class="py-0">
-        <v-text-field
-          v-model="lastName"
-          dense
-          name="lastName"
-          label="Last Name"
-          outlined
-          :rules="[rules.required]"
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col class="py-0">
-        <v-text-field
-          v-model="phone"
-          dense
-          name="phone"
-          label="Phone #"
-          outlined
-          :rules="[rules.required]"
-        ></v-text-field>
-      </v-col>
-      <v-col class="py-0">
-        <v-text-field
-          v-model="email"
-          dense
-          label="Email"
-          name="email"
-          outlined
-          :rules="[rules.required, rules.email]"
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col class="py-0">
-        <v-text-field
-          v-model="address"
-          dense
-          label="Street Address"
-          name="address"
-          outlined
-          :rules="[rules.required]"
-        ></v-text-field>
-      </v-col>
-      <v-col class="py-0">
-        <v-text-field
-          v-model="city"
-          dense
-          label="City"
-          name="city"
-          outlined
-          :rules="[rules.required]"
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col class="py-0">
-        <v-select
-          v-model="country"
-          dense
-          item-text="name"
-          item-value="code"
-          label="Country"
-          name="country"
-          outlined
-          return-object
-          :items="countries"
-          :rules="[rules.required]"
-          @change="shippingOpts(token.id)"
-        ></v-select>
-      </v-col>
-      <v-col class="py-0">
-        <v-select
-          v-model="region"
-          dense
-          item-text="name"
-          item-value="code"
-          label="Region"
-          name="region"
-          outlined
-          :items="country.states"
-          :rules="[rules.required]"
-        ></v-select>
-      </v-col>
-      <v-col class="py-0">
-        <v-text-field
-          v-model="postalCode"
-          dense
-          label="Postal Code"
-          name="postalCode"
-          outlined
-          :rules="[rules.required]"
-        ></v-text-field>
-      </v-col>
-    </v-row>
     <p class="title ml-3 mb-4">Payment Details</p>
     <v-text-field
       v-model="cardNumber"
@@ -155,19 +49,10 @@ export default {
     },
   },
   data: () => ({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    country: {},
-    city: '',
-    region: '',
-    postalCode: '',
-    cardNumber: '4242 4242 4242 4242',
-    expiryDate: '01/2023',
-    cvc: '123',
-    cardZip: '94103',
+    cardNumber: '',
+    expiryDate: '',
+    cvc: '',
+    cardZip: '',
     rules: {
       email: (v) => {
         const pattern =
